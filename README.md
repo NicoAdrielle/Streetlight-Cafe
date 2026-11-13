@@ -1,0 +1,22 @@
+# Streetlight Café
+
+A responsive brochure site built with React, TypeScript, Tailwind CSS, and Vite.
+
+## Run locally
+
+```sh
+npm install
+npm run dev
+```
+
+`npm run build` creates the static site in `dist/`.
+
+## Pages
+
+- `/` — home
+- `/story/` — our story
+- `/menu/` — full sample menu
+- `/menu/coffee/`, `/menu/non-coffee/`, `/menu/tea-refreshers/` — drink categories
+- `/visit/` — address and contact details
+
+The drink names and descriptions in `src/App.tsx` are illustrative because an official menu and prices were not supplied. Confirm the café's offerings before presenting them as final.
