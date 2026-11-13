@@ -21,4 +21,4 @@ npm run dev
 
 The drink names and descriptions in `src/App.tsx` are illustrative because an official menu and prices were not supplied. Confirm the café's offerings before presenting them as final.
 
-The 16 drink photos in `public/drinks/` were generated as illustrative sample images. They are not photos of the café's actual products.
+The 16 drink photos in `public/drinks/` are illustrative branded-cup mockups based on the café's supplied cup photo and logo. They are not photos of the café's actual products.
