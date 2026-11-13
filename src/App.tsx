@@ -2,26 +2,26 @@ import { useState } from 'react'
 import { ArrowDown, ArrowRight, Coffee, MapPin, Menu, Phone, X } from 'lucide-react'
 
 type Category = 'Coffee' | 'Non-coffee' | 'Tea & refreshers'
-type Drink = { name: string; note: string; category: Category; hot?: boolean; iced?: boolean }
+type Drink = { name: string; note: string; category: Category; image: string; hot?: boolean; iced?: boolean }
 
 // Illustrative menu; replace with confirmed offerings when supplied by the cafe.
 const drinks: Drink[] = [
-  { name: 'Espresso', note: 'A small, bold classic with a rich finish.', category: 'Coffee', hot: true },
-  { name: 'Americano', note: 'Espresso softened with water; smooth and simple.', category: 'Coffee', hot: true, iced: true },
-  { name: 'Café Latte', note: 'Espresso and silky milk in perfect balance.', category: 'Coffee', hot: true, iced: true },
-  { name: 'Cappuccino', note: 'A cozy cup with a generous cloud of foam.', category: 'Coffee', hot: true },
-  { name: 'Caramel Macchiato', note: 'Creamy coffee finished with caramel sweetness.', category: 'Coffee', hot: true, iced: true },
-  { name: 'Café Mocha', note: 'Chocolate and espresso, made for slow sipping.', category: 'Coffee', hot: true, iced: true },
-  { name: 'Spanish Latte', note: 'A sweet, velvety take on the iced latte.', category: 'Coffee', iced: true },
-  { name: 'Cold Brew', note: 'Slow-steeped for a mellow, refreshing cup.', category: 'Coffee', iced: true },
-  { name: 'Matcha Latte', note: 'Earthy green tea with creamy milk.', category: 'Non-coffee', hot: true, iced: true },
-  { name: 'Classic Chocolate', note: 'Rich cocoa comfort, warm or chilled.', category: 'Non-coffee', hot: true, iced: true },
-  { name: 'Strawberry Milk', note: 'A sweet and creamy berry treat.', category: 'Non-coffee', iced: true },
-  { name: 'Vanilla Cream', note: 'Smooth, mellow, and gently sweet.', category: 'Non-coffee', iced: true },
-  { name: 'Iced Lemon Tea', note: 'Bright citrus and tea over ice.', category: 'Tea & refreshers', iced: true },
-  { name: 'Peach Iced Tea', note: 'A fruity, easygoing afternoon refresher.', category: 'Tea & refreshers', iced: true },
-  { name: 'Honey Calamansi', note: 'A familiar citrus lift with a honey finish.', category: 'Tea & refreshers', hot: true, iced: true },
-  { name: 'Passion Fruit Fizz', note: 'Tropical sparkle in every sip.', category: 'Tea & refreshers', iced: true },
+  { name: 'Espresso', note: 'A small, bold classic with a rich finish.', category: 'Coffee', image: 'espresso.jpg', hot: true },
+  { name: 'Americano', note: 'Espresso softened with water; smooth and simple.', category: 'Coffee', image: 'americano.jpg', hot: true, iced: true },
+  { name: 'Café Latte', note: 'Espresso and silky milk in perfect balance.', category: 'Coffee', image: 'cafe-latte.jpg', hot: true, iced: true },
+  { name: 'Cappuccino', note: 'A cozy cup with a generous cloud of foam.', category: 'Coffee', image: 'cappuccino.jpg', hot: true },
+  { name: 'Caramel Macchiato', note: 'Creamy coffee finished with caramel sweetness.', category: 'Coffee', image: 'caramel-macchiato.jpg', hot: true, iced: true },
+  { name: 'Café Mocha', note: 'Chocolate and espresso, made for slow sipping.', category: 'Coffee', image: 'cafe-mocha.jpg', hot: true, iced: true },
+  { name: 'Spanish Latte', note: 'A sweet, velvety take on the iced latte.', category: 'Coffee', image: 'spanish-latte.jpg', iced: true },
+  { name: 'Cold Brew', note: 'Slow-steeped for a mellow, refreshing cup.', category: 'Coffee', image: 'cold-brew.jpg', iced: true },
+  { name: 'Matcha Latte', note: 'Earthy green tea with creamy milk.', category: 'Non-coffee', image: 'matcha-latte.jpg', hot: true, iced: true },
+  { name: 'Classic Chocolate', note: 'Rich cocoa comfort, warm or chilled.', category: 'Non-coffee', image: 'classic-chocolate.jpg', hot: true, iced: true },
+  { name: 'Strawberry Milk', note: 'A sweet and creamy berry treat.', category: 'Non-coffee', image: 'strawberry-milk.jpg', iced: true },
+  { name: 'Vanilla Cream', note: 'Smooth, mellow, and gently sweet.', category: 'Non-coffee', image: 'vanilla-cream.jpg', iced: true },
+  { name: 'Iced Lemon Tea', note: 'Bright citrus and tea over ice.', category: 'Tea & refreshers', image: 'iced-lemon-tea.jpg', iced: true },
+  { name: 'Peach Iced Tea', note: 'A fruity, easygoing afternoon refresher.', category: 'Tea & refreshers', image: 'peach-iced-tea.jpg', iced: true },
+  { name: 'Honey Calamansi', note: 'A familiar citrus lift with a honey finish.', category: 'Tea & refreshers', image: 'honey-calamansi.jpg', hot: true, iced: true },
+  { name: 'Passion Fruit Fizz', note: 'Tropical sparkle in every sip.', category: 'Tea & refreshers', image: 'passion-fruit-fizz.jpg', iced: true },
 ]
 const categories = ['All drinks', 'Coffee', 'Non-coffee', 'Tea & refreshers'] as const
 type Filter = typeof categories[number]
@@ -83,7 +83,7 @@ function App() {
       {page === 'menu' && <section id="menu" className="scroll-mt-20 bg-[#eae0ca] px-6 py-20 sm:px-10 sm:py-28 lg:px-12" aria-labelledby="menu-title"><div className="mx-auto max-w-7xl">
         <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between"><div><p className="eyebrow"><span className="eyebrow-line" /> The drinks</p><MenuHeading id="menu-title" className="mt-5 font-display text-[clamp(3rem,5.5vw,5.8rem)] leading-[1] tracking-[-0.04em]">Find your next <em className="text-[#9d6736]">favorite.</em></MenuHeading><p className="mt-5 max-w-xl text-base leading-7 text-[#735842]">From the first morning sip to an afternoon pick-me-up, there’s a little something for every mood.</p></div><div className="w-fit rounded-full border border-[#8f6745]/35 px-5 py-3 text-xs font-semibold uppercase tracking-[0.12em] text-[#75553b]">Sample menu · Availability may vary</div></div>
         <div className="filter-scroll mt-11 flex gap-2 overflow-x-auto border-b border-[#8a684b]/25 pb-4" aria-label="Drink categories">{categories.map(category => <a key={category} href={categoryPaths[category]} aria-current={filter === category ? 'page' : undefined} className={`shrink-0 rounded-full px-5 py-3 text-xs font-bold uppercase tracking-[0.11em] transition sm:px-6 ${filter === category ? 'bg-[#4b3020] text-[#fff7e7]' : 'border border-[#7b573e]/35 text-[#5f432d] hover:bg-[#f5ebd7]'}`}>{category}</a>)}</div>
-        <div className="mt-9 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">{visibleDrinks.map((drink, index) => <article key={drink.name} className="group flex min-h-[245px] flex-col justify-between border border-[#8b684a]/20 bg-[#f7f0e2] p-6 transition hover:-translate-y-1 hover:border-[#a7703e]/60 hover:shadow-[0_18px_40px_-24px_rgba(67,38,21,.4)] sm:p-7"><div><div className="mb-7 flex items-start justify-between gap-3"><span className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#a06c3e]">{String(index + 1).padStart(2, '0')} / {drink.category}</span><Coffee size={19} strokeWidth={1.5} className="shrink-0 text-[#9d714b]" /></div><h3 className="font-display text-[1.65rem] leading-tight tracking-[-0.02em]">{drink.name}</h3><p className="mt-3 text-sm leading-6 text-[#806b59]">{drink.note}</p></div><div className="mt-7 flex gap-2">{drink.hot && <span className="drink-tag">Hot</span>}{drink.iced && <span className="drink-tag">Iced</span>}</div></article>)}</div>
+        <div className="mt-9 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">{visibleDrinks.map((drink, index) => <article key={drink.name} className="group flex flex-col overflow-hidden border border-[#8b684a]/20 bg-[#f7f0e2] transition hover:-translate-y-1 hover:border-[#a7703e]/60 hover:shadow-[0_18px_40px_-24px_rgba(67,38,21,.4)]"><div className="relative aspect-[4/3] overflow-hidden bg-[#d7bd99]"><img src={`/drinks/${drink.image}`} alt={`Illustrative sample of ${drink.name}`} width="1024" height="1024" loading={index < 4 ? 'eager' : 'lazy'} decoding="async" className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.04]" /><span className="absolute left-4 top-4 rounded-full bg-[#f8f1e3]/90 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.12em] text-[#65452f]">Sample photo</span></div><div className="flex flex-1 flex-col justify-between p-6 sm:p-7"><div><div className="mb-5 flex items-start justify-between gap-3"><span className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#a06c3e]">{String(index + 1).padStart(2, '0')} / {drink.category}</span><Coffee size={19} strokeWidth={1.5} className="shrink-0 text-[#9d714b]" /></div><h3 className="font-display text-[1.65rem] leading-tight tracking-[-0.02em]">{drink.name}</h3><p className="mt-3 text-sm leading-6 text-[#806b59]">{drink.note}</p></div><div className="mt-7 flex gap-2">{drink.hot && <span className="drink-tag">Hot</span>}{drink.iced && <span className="drink-tag">Iced</span>}</div></div></article>)}</div>
         <p className="mt-7 text-center text-sm text-[#765b46]">Looking for current availability or prices? <a href="tel:+639627542148" className="font-semibold underline underline-offset-4">Call the café</a> before visiting.</p>
       </div></section>}
 

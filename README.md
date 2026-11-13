@@ -20,3 +20,5 @@ npm run dev
 - `/visit/` — address and contact details
 
 The drink names and descriptions in `src/App.tsx` are illustrative because an official menu and prices were not supplied. Confirm the café's offerings before presenting them as final.
+
+The 16 drink photos in `public/drinks/` were generated as illustrative sample images. They are not photos of the café's actual products.
