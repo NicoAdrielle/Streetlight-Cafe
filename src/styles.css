@@ -1,0 +1,17 @@
+@import "tailwindcss";
+:root { font-family: 'DM Sans', sans-serif; scroll-behavior: smooth; }
+body { margin: 0; }
+button, a { -webkit-tap-highlight-color: transparent; }
+button { cursor: pointer; }
+.font-display { font-family: 'Playfair Display', Georgia, serif; }
+.eyebrow { display: flex; align-items: center; gap: .75rem; color: #9a6537; font-size: .72rem; font-weight: 700; letter-spacing: .21em; text-transform: uppercase; }
+.eyebrow-line { display: inline-block; width: 2rem; height: 1px; background: #a46d3d; }
+.nav-link { transition: color .2s ease; }
+.nav-link:hover { color: #a16a36; }
+.mobile-link { padding: .9rem 0; font-size: .85rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.mobile-link + .mobile-link { border-top: 1px solid #4a2e1d22; }
+.drink-tag { border: 1px solid #a6785055; border-radius: 999px; padding: .32rem .7rem; color: #865f3e; font-size: .65rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.filter-scroll { scrollbar-width: none; }
+.filter-scroll::-webkit-scrollbar { display: none; }
+:focus-visible { outline: 2px solid #bd874e; outline-offset: 4px; }
+@media (prefers-reduced-motion: reduce) { :root { scroll-behavior: auto; } *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
